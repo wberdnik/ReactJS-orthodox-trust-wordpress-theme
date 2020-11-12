@@ -8,7 +8,7 @@
  *
  * @package WordPress
  * @subpackage none
- * @since Ortodoxal Trust 1.0
+ * @since Ortodox Trust 1.0
  */
 
 ?>

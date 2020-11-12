@@ -6,7 +6,7 @@
  *
  * @package WordPress
  * @subpackage none
- * @since Ortodoxal Trust 1.0
+ * @since Ortodox Trust 1.0
  */
 
 get_header();
@@ -17,11 +17,11 @@ get_header();
 
 			<div class="error-404 not-found">
 				<header class="page-header">
-					<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'ortodoxaltrust' ); ?></h1>
+					<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'ortodoxtrust' ); ?></h1>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
-					<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'ortodoxaltrust' ); ?></p>
+					<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'ortodoxtrust' ); ?></p>
 					<?php get_search_form(); ?>
 				</div><!-- .page-content -->
 			</div><!-- .error-404 -->
