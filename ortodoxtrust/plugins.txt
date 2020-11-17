@@ -1,0 +1,3 @@
+http://localhost/wp-admin/update.php?action=install-plugin&plugin=custom-post-type-ui&_wpnonce=ad8eaf5e2e
+http://localhost/wp-admin/update.php?action=install-plugin&plugin=acf-to-rest-api&_wpnonce=2460cd55d1
+http://localhost/wp-admin/update.php?action=install-plugin&plugin=advanced-custom-fields&_wpnonce=e5b835574f
