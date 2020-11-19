@@ -1,0 +1,8 @@
+empty=>  first plugin
+wp_options 
+active_plugins ++
+что-то там с обновлениями системы
+
+2=>3
+permalink_structure - в настройках
+rewrite_rules
