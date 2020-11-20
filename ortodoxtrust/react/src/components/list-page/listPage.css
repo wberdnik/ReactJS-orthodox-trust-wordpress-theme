@@ -1,0 +1,40 @@
+.listItem {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: flex-start;
+  border-bottom: solid 1px #7b808b;
+  justify-content: flex-start;
+}
+.listItem h3 {
+  margin-top: 0;
+}
+.listItem .itemBody {
+  margin-left: 15px;
+  width: 80%;
+}
+.listItem img {
+  width: 7vw;
+  height: auto;
+}
+
+.wrap-list {
+  margin-top: 20px;
+}
+
+.virtuoso-list {
+  width: 100%;
+  scrollbar-width: thin;
+}
+.virtuoso-list:hover {
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.virtuoso-list::-webkit-scrollbar {
+  width: 5px;
+}
+.virtuoso-list::-webkit-scrollbar-thumb {
+  background-color: silver;
+}
+
+/*# sourceMappingURL=listPage.css.map */

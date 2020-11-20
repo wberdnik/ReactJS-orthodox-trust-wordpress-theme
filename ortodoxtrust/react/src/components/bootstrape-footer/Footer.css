@@ -1,0 +1,54 @@
+.footer-item {
+  padding: 0;
+}
+
+.footer-col-content ul {
+  list-style-type: none;
+  padding-left: 0;
+  color: #7b808b;
+}
+.footer-col-content ul li {
+  margin-bottom: 5px;
+}
+.footer-col-content ul li a {
+  color: #7b808b;
+  text-decoration: none;
+  transition: 0.5s linear;
+}
+.footer-col-content ul li a:hover {
+  color: white;
+}
+
+.f-rows {
+  display: grid;
+  grid-template-columns: 33.3% 33.4% 33.3%;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.f-copyright {
+  color: #7b808b;
+}
+.f-copyright a {
+  color: #7b808b;
+  text-decoration: none;
+  transition: 0.5s linear;
+}
+.f-copyright a:hover {
+  color: white;
+}
+.f-copyright p {
+  text-align: center;
+}
+
+.f-container {
+  margin: 20px auto;
+  max-width: 90%;
+  font-family: "Poppins", sans-serif;
+}
+
+.sep {
+  padding: 0 8px;
+}
+
+/*# sourceMappingURL=Footer.css.map */

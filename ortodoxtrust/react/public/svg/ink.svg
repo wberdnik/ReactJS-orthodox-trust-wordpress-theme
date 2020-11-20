@@ -1,0 +1,89 @@
+<svg viewBox="0 0 800 600"
+     xmlns="http://www.w3.org/2000/svg"
+     preserveAspectRatio="xMidYMid slice"
+     style="visibility: visible;">
+    <defs>
+    <circle id="selectionDot" cy="104" r="27"></circle>
+    <clipPath id="menuMask0">
+        <rect id="menuDot0" width="100" height="30" x="14" y="280" rx="3" ry="3"></rect>
+    </clipPath>
+    <clipPath id="menuMask1">
+        <rect id="menuDot1" width="100" height="30" x="128" y="280" rx="3" ry="3"></rect>
+    </clipPath>
+    <clipPath id="menuMask2">
+        <rect id="menuDot2" width="100" height="30" x="242" y="280" rx="3" ry="3"></rect>
+    </clipPath>
+    <clipPath id="menuMask3"><rect id="menuDot3" width="100" height="30" x="356" y="280" rx="3" ry="3"></rect>
+    </clipPath>
+    <mask id="mainMask">
+        <rect width="100%" height="100%" fill="#FFF"></rect>
+        <use xlink:href="#menuDot0" fill="#fff"></use>
+        <use xlink:href="#menuDot1" fill="#fff"></use>
+        <use xlink:href="#menuDot2" fill="#000"></use>
+        <use xlink:href="#menuDot3" fill="#000"></use>
+    </mask>
+    <filter id="glow" x="-100%" y="-100%" width="350%" height="350%" color-interpolation-filters="sRGB">
+        <feGaussianBlur stdDeviation="2" result="coloredBlur"></feGaussianBlur>
+        <feOffset dx="0" dy="7" result="offsetblur"></feOffset>
+        <feFlood id="glowAlpha" flood-color="#000" flood-opacity="0.095"></feFlood>
+        <feComposite in2="offsetblur" operator="in"></feComposite>
+        <feMerge>
+            <feMergeNode></feMergeNode>
+            <feMergeNode in="SourceGraphic"></feMergeNode>
+        </feMerge>
+    </filter>
+</defs>
+    <g id="menuGroup" fill="#44596e">
+        <use xlink:href="#menuDot0" class="menuItem" menuId="0" style="transform-origin: 0px 0px 0px;"
+             data-svg-origin="64 295" transform="matrix(1,0,0,1,0,0)">
+            <title>О благочинии</title>
+        </use>
+        <use xlink:href="#menuDot1" class="menuItem" menuId="1">
+            <title>Храмы</title>
+        </use>
+        <use xlink:href="#menuDot2" class="menuItem" menuId="2">
+        <title>Патриарх</title>
+    </use>
+        <use xlink:href="#menuDot3" class="menuItem" menuId="3">
+            <title>Духовенство</title>
+        </use>
+        <use xlink:href="#menuDot0" class="menuHit" fill="#ffef80" opacity="0"
+             style="transform-origin: 0px 0px 0px; opacity: 0;" data-svg-origin="64 295"
+             transform="matrix(0.85,0,0,0.85,9.6,44.25)"></use>
+        <use xlink:href="#menuDot1" class="menuHit" fill="#ededed" opacity="0"></use>
+        <use xlink:href="#menuDot2" class="menuHit" fill="#ededed" opacity="0"></use>
+        <use xlink:href="#menuDot3" class="menuHit" fill="#ededed" opacity="0"></use>
+    </g>
+    <g filter="url(#glow)" id="menuShadow">
+        <g mask="url(#mainMask)">
+            <rect width="100%" height="100%" fill="#34495e"></rect>
+        </g>
+    </g>
+    <g id="selectionDotGroup0" clip-path="url(#menuMask0)">
+        <use xlink:href="#selectionDot" class="selectionDot" fill="#ffef80"
+             style="transform-origin: 0px 0px 0px;" data-svg-origin="0 104" transform="matrix(1,0,0,1,0,0)">
+
+        </use>
+    </g>
+    <g id="selectionDotGroup1" clip-path="url(#menuMask1)">
+        <use xlink:href="#selectionDot" class="selectionDot" fill="#ffef80"
+             style="transform-origin: 0px 0px 0px;" data-svg-origin="0 104"
+             transform="matrix(1,0,0,1,0,0)">
+
+        </use>
+    </g>
+    <g id="selectionDotGroup2" clip-path="url(#menuMask2)">
+        <use xlink:href="#selectionDot" class="selectionDot" fill="#ffef80"
+             style="transform-origin: 0px 0px 0px;" data-svg-origin="0 104"
+             transform="matrix(1,0,0,1,0,0)">
+
+        </use>
+    </g>
+    <g id="selectionDotGroup3" clip-path="url(#menuMask3)">
+        <use xlink:href="#selectionDot" class="selectionDot" fill="#ffef80"
+             style="transform-origin: 0px 0px 0px;" data-svg-origin="0 104"
+             transform="matrix(1,0,0,1,0,0)">
+
+        </use>
+    </g>
+</svg>

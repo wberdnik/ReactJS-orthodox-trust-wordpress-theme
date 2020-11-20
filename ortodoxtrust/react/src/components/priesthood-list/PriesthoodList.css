@@ -1,0 +1,45 @@
+.listItem-duh {
+  display: block;
+  margin-bottom: 10px;
+  border-bottom: solid 1px #7b808b;
+}
+.listItem-duh h3 {
+  margin-top: 0;
+}
+.listItem-duh .itemBody {
+  margin-left: 15px;
+  width: 10vw;
+}
+.listItem-duh img {
+  width: 10vw;
+  height: auto;
+}
+
+.wrap-list {
+  margin-top: 20px;
+}
+
+.virtuoso-list {
+  width: 100%;
+  scrollbar-width: thin;
+}
+.virtuoso-list:hover {
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.virtuoso-list::-webkit-scrollbar {
+  width: 5px;
+}
+.virtuoso-list::-webkit-scrollbar-thumb {
+  background-color: silver;
+}
+
+.modern-clirick-photo {
+  display: inline-block;
+  border: solid 1px #7b808b;
+  box-shadow: 0 7px 20px rgba(255, 255, 255, 0.25);
+  margin-bottom: 12px;
+}
+
+/*# sourceMappingURL=PriesthoodList.css.map */
