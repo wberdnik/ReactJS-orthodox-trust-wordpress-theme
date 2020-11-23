@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Context from "../../app/context";
-import {Spinner} from "../spinner";
+import Spinner from "../spinner";
 
 class SuperStatic extends Component {
     PolyContent(clutch){

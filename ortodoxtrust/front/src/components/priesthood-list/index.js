@@ -2,7 +2,7 @@ import React, {Component, useRef} from 'react';
 import {VirtuosoGrid } from 'react-virtuoso';
 import styled from '@emotion/styled';
 import Context from "../../app/context";
-import {Spinner} from "../spinner";
+import Spinner from "../spinner";
 import EntryContent from "../static-content/entryContent";
 import "./PriesthoodList.sass"
 import NewsFeed from "../news-feed";

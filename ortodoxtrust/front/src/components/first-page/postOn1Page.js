@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import Context from "../../app/context";
-import {Spinner} from "../spinner";
+import Spinner from "../spinner";
 
 export default function PostOn1Page() {
     const {isLoaded, content, title, date} = useContext(Context).data.firstPage;

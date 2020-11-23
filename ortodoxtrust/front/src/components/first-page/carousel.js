@@ -4,7 +4,7 @@ import React, {Component} from "react";
 import Slider from 'react-animated-slider';
 import horizontalCss from 'react-animated-slider/build/horizontal.css';
 import Context from "../../app/context";
-import {Spinner} from "../spinner";
+import Spinner from "../spinner";
 
 export class Carousel extends Component {
     render() {

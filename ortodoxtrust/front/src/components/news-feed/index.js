@@ -7,7 +7,7 @@
 import React, {Component} from 'react';
 import InfiniteCarousel from 'react-leaf-carousel';
 import Context from "../../app/context";
-import {Spinner} from "../spinner";
+import Spinner from "../spinner";
 
 
 //http://kenwheeler.github.io/slick/
