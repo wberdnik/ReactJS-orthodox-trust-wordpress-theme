@@ -1,21 +1,17 @@
 import React  from 'react';
-import BootstrapFooter from "../bootstrape-footer";
-import SuperStatic from "./SuperStatic";
+import {SimpleFooter} from "../bootstrape-footer";
+import BaseStaticContentComponent from "./BaseStaticContentComponent";
 
-class PatriarhContent extends SuperStatic {
-    PolyContent(clutch) {
+export default class PatriarhContent extends BaseStaticContentComponent {
+    PolyContent({title,content}) {
         return (
             <>
                 <div className="entry-content-list">
-                    <h2 className={'glory_text'} dangerouslySetInnerHTML={{__html: clutch.title}}/>
-                    <div style={{fontSize: '1.1em',}} dangerouslySetInnerHTML={{__html: clutch.content}}/>
+                    <h2 className={'glory_text'} dangerouslySetInnerHTML={{__html: title}}/>
+                    <div style={{fontSize: '1.1em',}} dangerouslySetInnerHTML={{__html: content}}/>
                 </div>
-                <footer>
-                    <BootstrapFooter/>
-                </footer>
+                <SimpleFooter />
             </>
         );
     }
 }
-
-export default PatriarhContent;

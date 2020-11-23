@@ -11,7 +11,17 @@
  * @version 1.?
  */
 
-function Reducer(state, action) {
+let startState = {
+    firstPage: {isLoaded: false}, //article of first page
+    carousel: {isLoaded: false},
+    finemenu: {isLoaded: false}, //category (taxonomy) list
+    staticPagesContent: {isLoaded: false}, //decoration of pages (WP pages)
+    calendar: [],
+    List: [], // Array content List component by category_id
+};
+
+
+function Reducer(state = startState, action) {
     let newState;
     switch (action.type) {
 
@@ -46,13 +56,5 @@ function Reducer(state, action) {
 }
 
 
-var startState = {
-    firstPage: {isLoaded: false}, //article of first page
-    carousel: {isLoaded: false},
-    finemenu: {isLoaded: false}, //category (taxonomy) list
-    staticPagesContent: {isLoaded: false}, //decoration of pages (WP pages)
-    calendar: [],
-    List: [], // Array content List component by category_id
-};
 
 export {startState, Reducer}

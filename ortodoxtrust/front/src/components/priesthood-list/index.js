@@ -1,12 +1,12 @@
 import React, {Component, useRef} from 'react';
-import {VirtuosoGrid } from 'react-virtuoso';
+import {VirtuosoGrid} from 'react-virtuoso';
 import styled from '@emotion/styled';
 import Context from "../../app/context";
 import Spinner from "../spinner";
 import EntryContent from "../static-content/entryContent";
 import "./PriesthoodList.sass"
 import NewsFeed from "../news-feed";
-import BootstrapFooter from "../bootstrape-footer";
+import {SimpleFooter} from "../bootstrape-footer";
 import {InnerStorage} from "../../app/InnerStorage";
 
 
@@ -56,7 +56,7 @@ const MyScrollContainer = ({
     const elRef = useRef(null)
 
     scrollTo(scrollTop => {
-        elRef.current.scrollTo({ top: scrollTop })
+        elRef.current.scrollTo({top: scrollTop})
     })
 
     return (
@@ -75,11 +75,10 @@ const MyScrollContainer = ({
     )
 }
 
-class PriesthoodList extends Component {
-
-
+export default class PriesthoodList extends Component {
     generateItem(dataItem) {
         return (
+            <ItemWrapper>
             <div className='listItem-duh'>
                 <div className="modern-clirick-photo">
                     <img src={dataItem.image} alt={dataItem.title}/>
@@ -89,6 +88,7 @@ class PriesthoodList extends Component {
                     <p dangerouslySetInnerHTML={{__html: dataItem.description}}/>
                 </div>
             </div>
+            </ItemWrapper>
         );
     }
 
@@ -99,29 +99,26 @@ class PriesthoodList extends Component {
                 <Context.Consumer>
                     {contextValue => {
 
-                            const currentList = contextValue.data.List[InnerStorage.currentCategoryId];
-                            if(currentList){
-                            return (
-                                <>
-                                <div className={'list-pages-columns'}>
-                                <VirtuosoGrid className="virtuoso-list"
-                                              ItemContainer={ItemContainer}
-                                              ListContainer={ListContainer}
-                                          ScrollContainer={MyScrollContainer}
-                                              totalCount={currentList.length}
-                                              item={index => <ItemWrapper>{this.generateItem(currentList[index])}</ItemWrapper>}/>
-                                              <NewsFeed vertical={true} />
-                                              </div>
-                                    <footer>
-                                        <BootstrapFooter />
-                                    </footer>
-                                </>);
+                        const currentList = contextValue.data.List[InnerStorage.currentCategoryId];
+                        if (!currentList) {
+                            return <Spinner/>;
                         }
-                        return <Spinner/>;
+                        return (
+                            <>
+                                <div className={'list-pages-columns'}>
+                                    <VirtuosoGrid className="virtuoso-list"
+                                                  ItemContainer={ItemContainer}
+                                                  ListContainer={ListContainer}
+                                                  ScrollContainer={MyScrollContainer}
+                                                  totalCount={currentList.length}
+                                                  item={index => this.generateItem(currentList[index])}
+                                    />
+                                    <NewsFeed vertical={true}/>
+                                </div>
+                                <SimpleFooter/>
+                            </>);
                     }}</Context.Consumer>
             </div>
         </>);
     }
 }
-
-export default PriesthoodList;

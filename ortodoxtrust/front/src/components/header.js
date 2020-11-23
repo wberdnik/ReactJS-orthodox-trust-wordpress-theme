@@ -4,10 +4,10 @@ import ShortMenu from "./shortMenu";
 import WhatCategory from "../app/whatCategory";
 import {withRouter} from "react-router-dom";
 
-function Header(props) {
+function Header({location}) {
     return <header className="App-header">
-        <WhatCategory pathname={props.location.pathname}/>
-        <FineMenu pathname={props.location.pathname}/>
+        <WhatCategory pathname={location.pathname}/>
+        <FineMenu pathname={location.pathname}/>
         <ShortMenu className="short-menu"/>
         <div className="maria">
             <span>
@@ -17,9 +17,7 @@ function Header(props) {
                 <h2 className="site-description">Сайт благочиния</h2>
             </span>
         </div>
-
     </header>;
 }
-
 
 export default withRouter(Header);

@@ -5,7 +5,7 @@ import Spinner from "../spinner";
 import EntryContent from "../static-content/entryContent";
 import "./listPage.sass"
 import NewsFeed from "../news-feed";
-import BootstrapFooter from "../bootstrape-footer";
+import {SimpleFooter} from "../bootstrape-footer";
 import {InnerStorage} from "../../app/InnerStorage";
 
 /*
@@ -60,16 +60,16 @@ const MyScrollContainer = ({
     )
 }
 
-class ListPage extends Component {
-
+export default class ListPage extends Component {
 
     generateItem(dataItem) {
+        const {image, title, description} = dataItem
         return (
             <div className='listItem'>
-                <img src={dataItem.image} alt={dataItem.title}/>
+                <img src={image} alt={title}/>
                 <div className="itemBody">
-                    <h3>{dataItem.title}</h3>
-                    <p dangerouslySetInnerHTML={{__html: dataItem.description}}/>
+                    <h3>{title}</h3>
+                    <p dangerouslySetInnerHTML={{__html: description}}/>
                 </div>
             </div>
         );
@@ -82,7 +82,7 @@ class ListPage extends Component {
                 <Context.Consumer>
                     {contextValue => {
 
-                            const currentList = contextValue.data.List[InnerStorage.currentCategoryId];
+                            const currentList = contextValue.data.List[InnerStorage.currentCategoryId]
                             if(currentList){
                             return (
                                 <>
@@ -93,9 +93,7 @@ class ListPage extends Component {
                                               item={index => this.generateItem(currentList[index])}/>
                                               <NewsFeed vertical={true} />
                                               </div>
-                                    <footer>
-                                        <BootstrapFooter />
-                                    </footer>
+                                    <SimpleFooter />
                                 </>);
                         }
                         return <Spinner/>;
@@ -104,5 +102,3 @@ class ListPage extends Component {
         </>);
     }
 }
-
-export default ListPage;

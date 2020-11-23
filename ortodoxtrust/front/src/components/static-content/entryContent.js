@@ -1,7 +1,7 @@
 import React from 'react';
-import SuperStatic from "./SuperStatic";
+import BaseStaticContentComponent from "./BaseStaticContentComponent";
 
-class EntryContent extends SuperStatic {
+class EntryContent extends BaseStaticContentComponent {
     PolyContent(clutch) {
         return (
             <div className="entry-content-list">
