@@ -25,27 +25,33 @@ export default function WhatCategory(props) {
     //debugger
     let menuItem
     const path = props.pathname === '/' ? '/main' : props.pathname,
-        currentCategoryIdBefore = InnerStorage.currentCategoryId,
-        filterUrl = item => '/' + item.slug === path || '/' + item.slug + '/' === path,
+        clearPath = path.match(/.*\/([\w -]+)+\/?$/)[1],
         findByPatch = haystack => {
-            const probe = haystack.filter(filterUrl)
+            const probe = haystack.filter(item => item.slug === clearPath)
             return probe.length && probe[0].id ? probe[0] : null
         }
     // finemenu загружалось с категориями
-    if (menuItem = findByPatch(state.data.finemenu.content)) {
+    if (!!(menuItem = findByPatch(state.data.finemenu.content))) {
         InnerStorage.currentCategoryId = menuItem.id
         InnerStorage.menuCategoryId = menuItem.id
-    } else if (menuItem = findByPatch(state.data.finemenu.subPages)){
+    } else if (!!(menuItem = findByPatch(state.data.finemenu.subPages))){
         InnerStorage.currentCategoryId = menuItem.id
         InnerStorage.menuCategoryId = menuItem.parent_id
     }
 
     //  post loading ListPage
     const id = InnerStorage.currentCategoryId
-    currentCategoryIdBefore !== id
-        && path.slice(1) in config.listMap
-        && !state.data.List[id] &&
+    if(clearPath in config.listMap && !state.data.List[id]) {
+        state.data.List[id] = [{
+            description: 'Загружается ...',
+            image: '',
+            featured_media: 0,
+            title: '',
+            id: '',
+            date: '',
+        }];
         loadREST(state.handle, 'list', id)
-
+        //console.log('List '+ id)
+    }
     return null
 }

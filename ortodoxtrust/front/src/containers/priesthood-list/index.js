@@ -2,11 +2,11 @@ import React, {Component, useRef} from 'react';
 import {VirtuosoGrid} from 'react-virtuoso';
 import styled from '@emotion/styled';
 import Context from "../../app/context";
-import Spinner from "../spinner";
-import EntryContent from "../static-content/entryContent";
+import Spinner from "../../components/spinner";
+import EntryContent from "../../components/static-content/entryContent";
 import "./PriesthoodList.sass"
-import NewsFeed from "../news-feed";
-import {SimpleFooter} from "../bootstrape-footer";
+import NewsFeed from "../../components/news-feed";
+import {SimpleFooter} from "../../components/bootstrape-footer";
 import {InnerStorage} from "../../app/InnerStorage";
 
 

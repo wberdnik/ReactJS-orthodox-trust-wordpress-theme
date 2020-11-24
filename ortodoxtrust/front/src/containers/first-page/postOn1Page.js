@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import Context from "../../app/context";
-import Spinner from "../../spinner";
+import Spinner from "../../components/spinner";
 
 /**  Статья на главной странице
  *

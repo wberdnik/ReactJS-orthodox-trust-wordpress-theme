@@ -1,11 +1,11 @@
 import React, {Component, useRef} from 'react';
 import {Virtuoso} from 'react-virtuoso';
 import Context from "../../app/context";
-import Spinner from "../spinner";
-import EntryContent from "../static-content/entryContent";
+import Spinner from "../../components/spinner";
+import EntryContent from "../../components/static-content/entryContent";
 import "./listPage.sass"
-import NewsFeed from "../news-feed";
-import {SimpleFooter} from "../bootstrape-footer";
+import NewsFeed from "../../components/news-feed";
+import {SimpleFooter} from "../../components/bootstrape-footer";
 import {InnerStorage} from "../../app/InnerStorage";
 
 /*
@@ -41,7 +41,7 @@ const MyScrollContainer = ({
     const elRef = useRef(null)
 
     scrollTo(scrollTop => {
-        elRef.current.scrollTo({ top: scrollTop })
+        elRef.current.scrollTo({top: scrollTop})
     })
 
     return (
@@ -82,21 +82,23 @@ export default class ListPage extends Component {
                 <Context.Consumer>
                     {contextValue => {
 
-                            const currentList = contextValue.data.List[InnerStorage.currentCategoryId]
-                            if(currentList){
-                            return (
-                                <>
-                                <div className={'list-pages-columns'} >
-                                <Virtuoso className="virtuoso-list"
-                                          ScrollContainer={MyScrollContainer}
+                        const currentList = contextValue.data.List[InnerStorage.currentCategoryId]
+                        if (!currentList) {
+                            return <Spinner/>;
+                        }
+
+                        return (
+                            <>
+                                <div className={'list-pages-columns'}>
+                                    <Virtuoso className="virtuoso-list"
+                                              ScrollContainer={MyScrollContainer}
                                               totalCount={currentList.length}
                                               item={index => this.generateItem(currentList[index])}/>
-                                              <NewsFeed vertical={true} />
-                                              </div>
-                                    <SimpleFooter />
-                                </>);
-                        }
-                        return <Spinner/>;
+                                    <NewsFeed vertical={true}/>
+                                </div>
+                                <SimpleFooter/>
+                            </>);
+
                     }}</Context.Consumer>
             </div>
         </>);

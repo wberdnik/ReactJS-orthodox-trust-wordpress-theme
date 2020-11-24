@@ -43,7 +43,7 @@ function Reducer(state = startState, action) {
             return newState;
         case 'loadedCalendar':
             newState = Object.assign({}, state);
-            newState.data.calendar = action.data;
+            newState.data.calendar = action.data; //contextValue.data.calendar
             return newState;
         case 'loadedList': //event
             newState = Object.assign({}, state);

@@ -1,4 +1,5 @@
-import SAXParser from "../../app/SAXParser";
+
+const type = 'loadedCalendar'
 
 export default function CalendarAction(dispatch){
     let content = [
@@ -14,9 +15,9 @@ export default function CalendarAction(dispatch){
 
     const head = document.getElementsByTagName('head').item(0)
 
-    const asyncCalendarIcon = day => new Promise(function (resolve, reject) {
+    const asyncCalendarIcon = day2find => new Promise(function (resolve, reject) {
         const script = document.createElement('script')
-        script.src = `http://script.pravoslavie.ru/icon.php?advanced=2&tmshift=${day * 24}`
+        script.src = `http://script.pravoslavie.ru/icon.php?advanced=2&tmshift=${day2find * 24}`
         script.type = 'text/javascript'
         script.async = !0
         script.onerror = a => {
@@ -24,23 +25,24 @@ export default function CalendarAction(dispatch){
             resolve(1)
         }
         script.onload = a => {
-            const {dayicon: day_icon} = window,
-                oldYear = +day_icon.monthnew === 1 && +day_icon.daynew < 14 ? +day_icon.year - 1 : +day_icon.year,
-                dateOld = new Date(oldYear, (+day_icon.monthold) - 1, +day_icon.dayold),
-                dateNew = new Date(+day_icon.year, (+day_icon.monthnew) - 1, +day_icon.daynew),
+            const {dayicon} = window,
+                {monthnew, daynew, year,monthold, dayold, text, src} = dayicon,
+                oldYear = +monthnew === 1 && +daynew < 14 ? +year - 1 : +year,
+                dateOld = new Date(oldYear, +monthold - 1, +dayold),
+                dateNew = new Date(+year, (+monthnew) - 1, +daynew),
                 week = dateNew.toLocaleString("ru", {weekday: 'long'})
 
             content.push({
-                day: +day_icon.daynew,
+                day: +daynew,
                 month: dateNew.toLocaleString("ru",
                     {month: 'long', day: 'numeric'}).split(' ')[1],
                 weekday: week[0].toLocaleUpperCase() + week.slice(1),
                 oldstyle: dateOld.toLocaleString("ru",
-                    {month: 'long', day: 'numeric',}),
-                text: `<p>${day_icon.text}</p>`,
-                alt: day_icon.text,
-                img: day_icon.src,
-                glide: day,
+                    {month: 'long', day: 'numeric'}),
+                text: `<p>${text}</p>`,
+                alt: text,
+                img: src,
+                glide: day2find,
             })
 
             head.removeChild(a.target)
@@ -58,8 +60,5 @@ export default function CalendarAction(dispatch){
         .then(response => asyncCalendarIcon(2))
         .then(response => asyncCalendarIcon(3))
         .then(response => asyncCalendarIcon(4))
-        .finally(x => dispatch({
-            type: 'loadedCalendar',
-            data: content
-        }))
+        .finally(x => dispatch({type, data: content}))
 }

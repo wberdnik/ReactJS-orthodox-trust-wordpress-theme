@@ -9,25 +9,30 @@ import InfiniteCarousel from 'react-leaf-carousel';
 import Context from "../../app/context";
 import Spinner from "../spinner";
 
-const Card =
-    ({alt, img, text, day, weekday, oldstyle, month}) => (
-        <>
+function Card (props) {
+    const {alt, img, text, day, weekday, oldstyle, month} = props.item,
+        style = props.vert === '1' ? {textAlign: 'left', fontWeight: 600, width: 150, marginTop: 20} :
+            {textAlign: 'left', fontWeight: 600, width: 150, marginLeft: 20}
+
+        return (<>
             <img alt={alt} src={img}/>
 
-            <div style={{textAlign: 'center', fontWeight: 600}}>
+            <div style={style}>
                 <div>
                     <span className={'news-feed__day'}>{day}</span> {month},
-                    <span className={'new-feed__weekday'}> {weekday}</span>
+                    <span className={'new-feed__weekday'}> {weekday}</span><br/>
                     <span className='news-feed__oldstyle_date'>
                                                         ({oldstyle} по ст.ст.)</span>
                 </div>
-            </div>
+
             <div className='new-feed__text-of-day'
                  dangerouslySetInnerHTML={{__html: text}}/>
             <div>
-                <a target="_blank" href="http://prihod.ru/days/">подробнее</a>
+                <a target="_blank" rel="noopener noreferrer" href="http://prihod.ru/days/">подробнее</a>
             </div>
-        </>);
+            </div>
+        </>)
+}
 
 
 //http://kenwheeler.github.io/slick/
@@ -38,7 +43,7 @@ export default class NewsFeed extends Component {
             {contextValue => {
 
                 const currentList = contextValue.data.calendar;
-                if (currentList.length) {
+                if (!currentList.length) {
                     return <Spinner/>;
                 }
 
@@ -46,7 +51,7 @@ export default class NewsFeed extends Component {
                     const item = currentList.filter(x => x.glide === 0)[0];
                     return (
                         <div style={{marginLeft: 20}}>
-                            <Card item={item}/>
+                            <Card item={item} vert={'1'}/>
                         </div>
                     );
 
@@ -84,7 +89,7 @@ export default class NewsFeed extends Component {
                                     (item, inx) => (
                                         <div key={inx} style={
                                             {display: 'grid', gridTemplateColumns: "30% auto"}}>
-                                            <Card item={item}/>
+                                            <Card item={item} vert={'0'}/>
                                         </div>))}
                             </InfiniteCarousel>
                         </div>

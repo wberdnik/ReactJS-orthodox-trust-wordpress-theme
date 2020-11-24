@@ -6,7 +6,7 @@ import {config} from "../../app/config";
 // Columns
 function SocialIcons() {
     return config.socials.map(item =>
-        <li className="footer-item">
+        <li key={item.FontAwesomeIcon} className="footer-item">
             <a href={item.url} target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={['fab', item.FontAwesomeIcon]} size="2x"/> &nbsp;
                 {item.text}
@@ -16,16 +16,16 @@ function SocialIcons() {
 }
 
 function Sites() {
-    return config.footer_sites.map(item =>
-        <li className="footer-item">
+    return config.footer_sites.map((item, inx) =>
+        <li key ={inx}  className="footer-item">
             <a href={item.url} target="_blank" rel="noopener noreferrer">{item.text}</a>
         </li>
     )
 }
 
 function Contacts() {
-    return config.contacts.map(item =>
-        <li><FontAwesomeIcon icon={['fas', item.FontAwesomeIcon]} size="2x"/> &nbsp; {item.text}</li>
+    return config.contacts.map((item, inx) =>
+        <li key ={inx}><FontAwesomeIcon icon={['fas', item.FontAwesomeIcon]} size="2x"/> &nbsp; {item.text}</li>
     )
 }
 

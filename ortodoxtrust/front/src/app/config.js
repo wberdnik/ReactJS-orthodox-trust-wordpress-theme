@@ -1,7 +1,8 @@
-import ListPage from "../components/list-page";
-import PriesthoodList from "../components/priesthood-list"
+import ListPage from "../containers/list-page";
+import PriesthoodList from "../containers/priesthood-list"
 
 export const config = {
+    site: 'http://wp2020.loc',
     socials: [
         {
             url: 'https://vk.com/club172766164',
@@ -34,4 +35,8 @@ export const config = {
         holy: ListPage,
         duhovenstvo: PriesthoodList
     },
+    categories_id:{
+        DUHOVENSTVO: 8,
+        FIRSTPAGE: 5,
+    }
 };

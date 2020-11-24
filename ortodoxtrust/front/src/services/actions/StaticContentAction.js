@@ -1,9 +1,11 @@
-export default function StaticContentAction(m_axios, url, dispatch){
-    // load pages decoration ========================================================================
-    m_axios('Static Pages Content (decoration)',
-        url,
+import m_axios from "./Transport";
+
+const type = 'loadedStaticPagesContent'
+
+export default function StaticContentAction(url, dispatch) {
+    m_axios('Static Pages Content (decoration)', url,
         data => {
-            let content = [];
+            const content = [];
             for (let i = 0, n = data.length; i < n; i++) {
                 const datum = data[i];
                 content[+datum.acf.category] = {
@@ -11,14 +13,6 @@ export default function StaticContentAction(m_axios, url, dispatch){
                     content: datum.content.rendered,
                 };
             }
-
-            dispatch({
-                type: 'loadedStaticPagesContent',
-                data: {
-                    content: content,
-                }
-            });
-
-        });
-
+            dispatch({type, data: {content}})
+        })
 }

@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import Slider from 'react-animated-slider';
 import horizontalCss from 'react-animated-slider/build/horizontal.css';
 import Context from "../../app/context";
-import Spinner from "../../spinner";
+import Spinner from "../../components/spinner";
 
 /**
  * Карусель фотографий на главной странице

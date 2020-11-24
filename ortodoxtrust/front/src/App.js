@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import FirstPage from "./components/pages/first-page/firstPage";
+import FirstPage from "./containers/first-page/firstPage";
 import Context from "./app/context";
 import loadREST from "./app/RESTLoader";
 import {BrowserRouter, Redirect, Route, Switch,} from "react-router-dom";
@@ -8,7 +8,7 @@ import {Reducer, startState} from "./app/reducer";
 import Header from "./components/header";
 import {config} from "./app/config";
 import PatriarhContent from "./components/static-content/PatriarhContent";
-import ContactsPage from "./components/pages/contactPage";
+import ContactsPage from "./containers/contactPage";
 
 class App extends React.Component {
 

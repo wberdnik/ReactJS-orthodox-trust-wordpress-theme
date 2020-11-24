@@ -1,6 +1,6 @@
 import React from 'react';
-import EntryContent from "../../static-content/entryContent";
-import {SimpleFooter} from "../../bootstrape-footer";
+import EntryContent from "../../components/static-content/entryContent";
+import {SimpleFooter} from "../../components/bootstrape-footer";
 import {Map, YMaps} from 'react-yandex-maps';
 
 //http://kenwheeler.github.io/slick/
