@@ -1,37 +1,59 @@
 <?php
 /**
- * The header for our theme
+ * Ortodox Trust WordPress Theme header.php
  *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @package WordPress
- * @subpackage Twenty_Nineteen
- * @since Twenty Nineteen 1.0
+ * @subpackage Ortodox_Trust 
  */
 ?>
 <!DOCTYPE html>
-<html lang="ru" class="skrollr skrollr-desktop">
+<html lang="ru-RU">
     <head>
-        <meta charset="UTF-8">
-        <title>CPA network | Профессиональная лидогенерация | ProfLead</title>        
+        <meta charset="utf-8"/>
+        <link rel="icon" href="/favicon.ico"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"/>
+        <meta name="theme-color" content="#000000"/>
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="Александровское благочиние Волоградской епархии">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Александровское благочиние Волоградской епархии">
+        <meta name="rights" content="©Русская православная церковь">
+        <!--script async="" src="http://graph.facebook.com/?callback=WPCOMSharing.update_
+        facebook_count&amp;ids=http%3A%2F%2Fcentral-blag.ru%2Fxramy%2F&amp;_=1592802555084"></script -->
+        <meta name="description" content="Официальный сайт Александровского благочиния Волоградской епархии"/>
+        <!-- link rel="apple-touch-icon" href="/logo192.png"/ -->
+        <link rel="manifest" href="/manifest.json"/>
+        <title>Храмы благочиния - Александровское благочиние Волоградской епархии</title>
+        <link rel="canonical" href="index.html">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Храмы благочиния - Александровское благочиние Волоградской епархии">
+        <meta property="og:url" content="http://central-blag.ru/xramy/">
+        <meta property="og:site_name" content="Александровское благочиние Волоградской епархии">
+        <meta property="article:published_time" content="2013-04-05T17:53:53+00:00">
+        <meta property="article:modified_time" content="2014-07-24T13:18:10+00:00">
+        <?php wp_head(); ?>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link rel="profile" href="http://gmpg.org/xfn/11">
-        <meta name="generator" content="Hand made">
+       
+        <!--[if lt IE 9]>  <script src="/media/jui/js/html5.js"></script><![endif]-->
+    </head>
+    <body>
+        <?php //wp_body_open(); ?>
+        <noscript>Сайт использует Java Script. Без JS работа сайта не возможна.</noscript>
+        <script>
+            const SupportsCSS = (property, value, el) => {
+                el = document.createElement('span')
+                if (el.style[property] === undefined) return !1
+                el.style.cssText = property + ':' + value
+                return el.style[property] === value
+            }
 
-        <meta name="description" content="Профессиональное совершенство в деталях. Безупречная лидогенерация без компромиссов.">
-        <meta name="robots" content="index, follow">
-        <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-        <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-        <link rel="canonical" href="https://www.proflead.org/">
+            if (!SupportsCSS('display', 'grid')) {
+                alert('Браузер не поддерживает GridBox, обновите браузер')
+            }
+        </script>
+        <span></span><div id="root"></div><span></span>
 
-        <link href="/react/static/css/2.764ccc25.chunk.css" rel="stylesheet">
-         <link href="/react/static/css/main.e9f89408.chunk.css" rel="stylesheet">
-
-	<?php wp_head(); ?>
-</head>
-
-<body >
-<?php wp_body_open(); ?>
