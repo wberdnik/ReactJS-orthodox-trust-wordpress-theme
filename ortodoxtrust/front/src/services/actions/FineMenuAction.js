@@ -1,4 +1,5 @@
 import m_axios from "./Transport";
+import {config} from "../../app/config";
 
 const type = 'loadedFinemenu'
 
@@ -8,9 +9,9 @@ export default function FineMenuAction(url, dispatch) {
         url,
         data => {
             if (!data.length)  return Promise.reject(new Error('Не найдено меню'))
-            const row = data.find(item => item.slug === 'candlemenu')
+            const row = data.find(item => item.slug === config.categories.CANDLE_MENU)
             if (row === undefined) {
-                return Promise.reject(new Error('Не найдено меню slug ``candlemenu``'))
+                return Promise.reject(new Error('Не найдено меню slug ``'+config.categories.CANDLE_MENU+'``'))
             }
 
             let root_category_id = row.id,
@@ -38,3 +39,4 @@ export default function FineMenuAction(url, dispatch) {
             dispatch({type, data: {content, cnt: content.length, subPages}})
         })
 }
+// Иерархия категорий- ???

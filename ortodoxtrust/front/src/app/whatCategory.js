@@ -10,6 +10,7 @@ import Context from "./context";
 import {config} from "./config";
 import loadREST from "./RESTLoader";
 import {InnerStorage} from "./InnerStorage";
+import FirstPageContentAction from "../services/actions/FirstPageContentAction";
 
 /**
  * Псевдокомпонент. По URL определяет номер категории WordPress
@@ -30,12 +31,22 @@ export default function WhatCategory(props) {
             const probe = haystack.filter(item => item.slug === clearPath)
             return probe.length && probe[0].id ? probe[0] : null
         }
+
+
+    // first page static
+    if(!InnerStorage.firstPageId && +state.data.finemenu.content[0].id) {
+        InnerStorage.firstPageId = +state.data.finemenu.content[0].id
+        FirstPageContentAction(
+            `${config.site}/wp-json/wp/v2/posts?categories=${InnerStorage.firstPageId}&status=publish`, state.handle)
+    }
     // finemenu загружалось с категориями
     if (!!(menuItem = findByPatch(state.data.finemenu.content))) {
         InnerStorage.currentCategoryId = menuItem.id
+        InnerStorage.currentCategorySlug = menuItem.slug
         InnerStorage.menuCategoryId = menuItem.id
     } else if (!!(menuItem = findByPatch(state.data.finemenu.subPages))){
         InnerStorage.currentCategoryId = menuItem.id
+        InnerStorage.currentCategorySlug = menuItem.slug
         InnerStorage.menuCategoryId = menuItem.parent_id
     }
 
@@ -50,7 +61,7 @@ export default function WhatCategory(props) {
             id: '',
             date: '',
         }];
-        loadREST(state.handle, 'list', id)
+        loadREST(state.handle, 'list', {id, isDuh: 'duhovenstvo' ===clearPath})
         //console.log('List '+ id)
     }
     return null

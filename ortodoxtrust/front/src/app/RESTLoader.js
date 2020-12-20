@@ -6,43 +6,35 @@
 import CalendarAction from "../services/actions/CalendarAction";
 import FineMenuAction from "../services/actions/FineMenuAction";
 import StaticContentAction from "../services/actions/StaticContentAction";
-import FirstPageContentAction from "../services/actions/FirstPageContentAction";
 import CarouselAction from "../services/actions/CarouselAction";
 import {config} from "./config";
 import CommonListAction from "../services/actions/CommonListAction";
-
+import pureWP from "./pureRESTLoader";
 
 const site = config.site,
-    WP_CATEGORY_ID_FIRSTPAGE = config.categories_id.FIRSTPAGE,
-    WP_CATEGORY_ID_DUHOVENSTVO = config.categories_id.DUHOVENSTVO,
 
     loadWP = (dispatch, choice, id) => {//aggregate root
         switch (choice) {
             case 'all':
                 CalendarAction(dispatch)
-                FineMenuAction( site + '/wp-json/wp/v2/categories', dispatch)
+                FineMenuAction( site + '/wp-json/wp/v2/categories?per_page=100', dispatch)
                 StaticContentAction(site + '/wp-json/wp/v2/pages?status=publish', dispatch)
-                FirstPageContentAction(
-                    `${site}/wp-json/wp/v2/posts?categories=${WP_CATEGORY_ID_FIRSTPAGE}&status=publish`, dispatch)
-
                 CarouselAction(site + '/wp-json/wp/v2/carusel', dispatch)
                 break;
 
             case 'list':
-                if (id === undefined) {
+                if (id.id === undefined) {
                     console.error('reducer=>list: id == undefined')
                     return
                 }
-                switch (id) {
-                    case WP_CATEGORY_ID_DUHOVENSTVO:
-                        CommonListAction(site + '/wp-json/wp/v2/duhovenstvo',dispatch,
-                            site + '/wp-json/wp/v2/media', id)
-                        break;
-                    default:
+                if(id.isDuh) {
+                    CommonListAction(site + '/wp-json/wp/v2/duhovenstvo', dispatch,
+                        site + '/wp-json/wp/v2/media', id.id)
+                }else{
                         CommonListAction(
-                            site + '/wp-json/wp/v2/posts?categories=' + id + '&status=publish',
+                            site + '/wp-json/wp/v2/posts?categories=' + id.id + '&status=publish',
                             dispatch,
-                            site + '/wp-json/wp/v2/media', id)
+                            site + '/wp-json/wp/v2/media', id.id)
                 }
                 break;
             default:
@@ -70,5 +62,6 @@ const site = config.site,
  list         number, id of post category       loadedList
  **/
 export default function loadREST(dispatch, choice, id) {
-    loadWP.apply(null, arguments)
+    pureWP.apply(null, arguments)
+    //loadWP.apply(null, arguments)
 }

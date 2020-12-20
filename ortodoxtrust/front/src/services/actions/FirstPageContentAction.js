@@ -18,3 +18,4 @@ export default function FirstPageContentAction(url, dispatch){
             })
         })
 }
+// {date:, title:, content:} - post

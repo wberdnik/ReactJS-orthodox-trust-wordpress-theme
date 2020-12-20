@@ -2,7 +2,7 @@ import ListPage from "../containers/list-page";
 import PriesthoodList from "../containers/priesthood-list"
 
 export const config = {
-    site: 'http://wp2020.loc',
+    site: 'http://pure.loc',//window.location.origin,
     socials: [
         {
             url: 'https://vk.com/club172766164',
@@ -35,8 +35,9 @@ export const config = {
         holy: ListPage,
         duhovenstvo: PriesthoodList
     },
-    categories_id:{
-        DUHOVENSTVO: 8,
-        FIRSTPAGE: 5,
-    }
+    categories:{
+      CANDLE_MENU: 'candlemenu',
+      PARENT_PAGE_OF_CAROUSEL: 'carousel',
+      DUHOVENSTVO_CATEGORY: 'duhoventstvolist',
+    },
 };

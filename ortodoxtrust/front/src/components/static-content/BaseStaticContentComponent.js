@@ -14,8 +14,11 @@ class BaseStaticContentComponent extends Component {
         return <Context.Consumer>
             {contextValue => {
                 if (contextValue.data.staticPagesContent.isLoaded) {
-                    const filteredContent = contextValue.data.staticPagesContent.content[
+                    let filteredContent = contextValue.data.staticPagesContent.content[
                         InnerStorage.currentCategoryId
+                        ];
+                    if(!filteredContent)filteredContent = contextValue.data.staticPagesContent.content[
+                        InnerStorage.currentCategorySlug
                         ];
 
                     return this.PolyContent(filteredContent ? filteredContent : {title: '', content: ''})
